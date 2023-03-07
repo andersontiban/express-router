@@ -3,8 +3,6 @@ const app = express()
 const port = 3000
 
 
-
-
 // Express Routes
 const usersRouter = require("./routes/users")
 const fruitsRouter = require("./routes/fruits")
