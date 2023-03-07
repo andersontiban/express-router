@@ -30,4 +30,27 @@ router.get("/:id", (request, response)=>{
     response.json(users[request.params.id-1])
 })
 
+//implement middleware
+router.use(express.json())
+
+//create new user in array using POST
+router.post("/", async(request, response)=>{
+    let newUser = request.body;
+    users.push(newUser);
+    response.json(users);
+})
+
+//update user in array using PUT
+router.put("/:id", async(request, response)=>{
+    let index =  request.params.id;
+    users.splice(index-1, 1 ,request.body)
+    response.json(users);
+})
+//delete item in array using delete
+router.delete("/:id", async(request, response)=>{
+    let index = request.params.id;
+    users.splice(index-1, 1)
+    response.json(users)
+})
+
 module.exports = router;
